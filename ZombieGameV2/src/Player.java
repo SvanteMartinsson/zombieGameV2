@@ -20,7 +20,7 @@ public class Player {
 		this.y = y;
 		velX = 0;
 		velY = 0;
-		velocity = 5;
+		velocity = 2;
 		this.grid = grid;
 	}
 	
@@ -79,6 +79,14 @@ public class Player {
 	
 	public Rectangle getLowerBounds(){
 		return new Rectangle(x, y+13, 15, 2);
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
 	}
 	
 }

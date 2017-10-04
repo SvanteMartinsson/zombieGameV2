@@ -19,8 +19,9 @@ public class Grid {
 	private Tileset tiles;
 	private BufferedImage tileSet;
 	private Main main;
+	private Handler handler;
 	
-	public Grid(int width, int height, int blocksWidth, int blocksHeight, Main main){
+	public Grid(int width, int height, int blocksWidth, int blocksHeight, Main main, Handler handler){
 		this.width = width;
 		this.height = height;
 		this.blocksHeight = blocksHeight;
@@ -30,6 +31,7 @@ public class Grid {
 		tWidth = 16;
 		tHeight = 16;
 		this.main = main;
+		this.handler = handler;
 		//System.out.println(this.getClass().getResource("res/tilesBasic.png"));
 		tiles = new Tileset(this);
 	}
@@ -40,6 +42,17 @@ public class Grid {
 				gridList[x][y] = 0;
 			}
 		}
+	}
+	
+	public void checkCollision(){
+		for(int z = 0 ; z < collisionList.size(); z++){
+			for(int i = 0; i < handler.getObjList().size(); i++){
+				if(collisionList.get(z).intersects(handler.getBounds(i))){
+					handler.removeObject(i);
+				}
+			}
+		}
+		
 	}
 
 
